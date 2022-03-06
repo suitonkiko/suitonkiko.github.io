@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chip Friends</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/send_url.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="header-logo">TOP</a>
+    </header>
+    <div class="container">
+      <div class="container-header">
+        <h1>Chip Friends</h1>
+        <a href="/new" class="new-button">+ 新規作成</a>
+      </div>
+      <div class="index-table-wrapper">
+        <div class="table-head">
+          <span class="id-column">ID</span>
+          <span>メンバー</span>
+        </div>
+
+        <ul class="table-body">
+          <% users.forEach((user) => { %>
+            <li>
+              <div class="user-data">
+                <span class="id-column"><%= user.id %></span>
+                <span class="name-column"><%= user.name %></span>
+                <form action="/delete/<%=user.id %>" method="post">
+                  <input type="submit" value="削除">
+                </form>
+                <a href="/edit/<%=user.id%>" class="user-edit">編集</a>
+              </div>
+            </li>
+          <% }) %>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
